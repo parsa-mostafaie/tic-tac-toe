@@ -5,7 +5,7 @@
 }
 
 .center {
-  position: fixed;
+  position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
@@ -16,6 +16,7 @@
 }
 
 body {
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
@@ -49,17 +50,21 @@ body {
 }
 
 .turn {
+  background-color: #777a;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: inline-block;
-  transition: transform 5s;
+  transition: all 1s;
   text-transform: capitalize;
   padding: 5px;
   font-size: 1.5rem;
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  -webkit-transition: transform 5s;
-  -moz-transition: transform 5s;
-  -ms-transition: transform 5s;
-  -o-transition: transform 5s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
 }
 
 .turn.red {
@@ -71,12 +76,14 @@ body {
 }
 
 .turn.win {
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  font-size: 3rem;
   font-weight: bolder;
-  transform: rotateX(360deg);
-  -webkit-transform: rotateX(360deg);
-  -moz-transform: rotateX(360deg);
-  -ms-transform: rotateX(360deg);
-  -o-transform: rotateX(360deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 576px) {
