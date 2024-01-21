@@ -75,6 +75,10 @@ body {
   color: var(--blue-player);
 }
 
+.turn.pot {
+  color: var(--nop);
+}
+
 .turn.win {
   z-index: 9999;
   width: 100vw;

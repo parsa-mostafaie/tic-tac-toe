@@ -28,10 +28,18 @@ childs.forEach((item, index) => {
       item.classList.add(color_dict[current_player]);
       checkWin(() => {
         if (winner == 0) {
-          turn.classList.remove(color_dict[current_player]);
-          current_player = current_player == 1 ? 2 : 1;
-          turn.classList.add(color_dict[current_player]);
-          turn.textContent = color_dict[current_player] + "'s Turn";
+          if (filled()) {
+            winner = -1;
+
+            turn.classList.add("pot");
+            turn.classList.add("win");
+            turn.textContent = "Pot";
+          } else {
+            turn.classList.remove(color_dict[current_player]);
+            current_player = current_player == 1 ? 2 : 1;
+            turn.classList.add(color_dict[current_player]);
+            turn.textContent = color_dict[current_player] + "'s Turn";
+          }
         }
       });
     }
@@ -53,4 +61,14 @@ function checkWin(callback) {
     }
   });
   callback();
+}
+
+function filled() {
+  let res = true;
+  game.forEach((item) => {
+    if (item == 0) {
+      res = false;
+    }
+  });
+  return res;
 }
