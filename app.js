@@ -54,7 +54,10 @@ function checkWin(callback) {
       if (g[0] !== 0) {
         winner = g[0];
 
-        turn.classList.add(color_dict[g[0]]);
+        [childs[item[0]-1], childs[item[1]-1], childs[item[2]-1]].forEach((child) => {
+          child.classList.add("wins");
+        });
+
         turn.classList.add("win");
         turn.textContent = color_dict[g[0]] + " Win!";
       }

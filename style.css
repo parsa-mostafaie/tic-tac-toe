@@ -39,6 +39,11 @@ body {
   -moz-border-radius: 25%;
   -ms-border-radius: 25%;
   -o-border-radius: 25%;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
 }
 
 .child.red {
@@ -88,6 +93,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #dbb630;
+}
+
+.child.wins{
+  rotate: 360deg;
+}
+
+.child.blue.wins {
+  background: linear-gradient(0deg, darkblue, blue);
+}
+
+.child.red.wins {
+  background: linear-gradient(0deg, darkred, red);
 }
 
 @media (min-width: 576px) {
