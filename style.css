@@ -1,6 +1,6 @@
 :root {
-  --blue-player: #50f;
-  --red-player: #f05;
+  --blue-player: blue;
+  --red-player: red;
   --nop: #aaa;
 }
 
