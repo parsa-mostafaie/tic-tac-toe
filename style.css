@@ -17,8 +17,8 @@
 
 body {
   overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   box-sizing: border-box;
   margin: 0;
   background-color: #597;
@@ -87,7 +87,9 @@ body {
 .turn.win {
   z-index: 9999;
   width: 100vw;
+  width: 100dvw;
   height: 100vh;
+  height: 100dvh;
   font-size: 3rem;
   font-weight: bolder;
   display: flex;
@@ -96,7 +98,7 @@ body {
   color: #dbb630;
 }
 
-.child.wins{
+.child.wins {
   rotate: 360deg;
 }
 
@@ -107,6 +109,8 @@ body {
 .child.red.wins {
   background: linear-gradient(0deg, darkred, red);
 }
+
+
 
 @media (min-width: 576px) {
   .child {
