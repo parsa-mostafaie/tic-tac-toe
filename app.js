@@ -11,7 +11,8 @@ let win_modes = [
 
 let color_dict = [[], ["red"], ["blue"]]; // 0: nop; 1: red, 2: blue
 
-let game = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+let game_empty = JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+let game = JSON.parse(game_empty);
 
 let childs = document.querySelectorAll(".child");
 
@@ -93,10 +94,23 @@ window.addEventListener("load", () => {
   } else {
     history = [0, 0, 0];
   }
+
+  if (localStorage.getItem("GAME")) {
+    game = JSON.parse(localStorage.getItem("GAME"));
+    childs.forEach((child, index) => {
+      child.classList.add(color_dict[game[index] ? game[index] : ""]);
+    });
+  }
+
   updateScore();
 });
 
 window.addEventListener("beforeunload", () => {
+  if (winner == 0) {
+    localStorage.setItem("GAME", JSON.stringify(game));
+  } else {
+    localStorage.setItem("GAME", game_empty);
+  }
   localStorage.setItem("HISTORY", JSON.stringify(history));
 });
 
@@ -114,6 +128,7 @@ let clear = document.getElementById("clear");
 
 clear.addEventListener("click", () => {
   history = [0, 0, 0];
+  game = JSON.parse(game_empty);
   localStorage.clear();
   location.reload();
 });
