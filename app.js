@@ -138,3 +138,11 @@ let reload = document.getElementById("RELOAD");
 reload.addEventListener("click", () => {
   location.reload();
 });
+
+let newg = document.getElementById("newg");
+
+newg.addEventListener("click", () => {
+  game = JSON.parse(game_empty);
+  localStorage.setItem(game, game_empty);
+  location.reload();
+});
