@@ -34,6 +34,8 @@ childs.forEach((item, index) => {
             turn.classList.add("pot");
             turn.classList.add("win");
             turn.textContent = "Pot";
+            history[2]++;
+            updateScore();
           } else {
             turn.classList.remove(color_dict[current_player]);
             current_player = current_player == 1 ? 2 : 1;
@@ -54,12 +56,18 @@ function checkWin(callback) {
       if (g[0] !== 0) {
         winner = g[0];
 
-        [childs[item[0]-1], childs[item[1]-1], childs[item[2]-1]].forEach((child) => {
-          child.classList.add("wins");
-        });
+        [childs[item[0] - 1], childs[item[1] - 1], childs[item[2] - 1]].forEach(
+          (child) => {
+            child.classList.add("wins");
+          }
+        );
 
         turn.classList.add("win");
         turn.textContent = color_dict[g[0]] + " Win!";
+
+        history[g[0] - 1]++;
+
+        updateScore();
       }
     }
   });
@@ -75,3 +83,43 @@ function filled() {
   });
   return res;
 }
+
+let history = [0, 0, 0];
+
+window.addEventListener("load", () => {
+  history = localStorage.getItem("HISTORY");
+  if (history) {
+    history = JSON.parse(history);
+  } else {
+    history = [0, 0, 0];
+  }
+  updateScore();
+});
+
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("HISTORY", JSON.stringify(history));
+});
+
+let blues = document.getElementById("blues");
+let reds = document.getElementById("reds");
+let pots = document.getElementById("pots");
+
+function updateScore() {
+  blues.textContent = history[1];
+  reds.textContent = history[0];
+  pots.textContent = history[2];
+}
+
+let clear = document.getElementById("clear");
+
+clear.addEventListener("click", () => {
+  history = [0, 0, 0];
+  localStorage.clear();
+  location.reload();
+});
+
+let reload = document.getElementById("RELOAD");
+
+reload.addEventListener("click", () => {
+  location.reload();
+});

@@ -96,6 +96,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #dbb630;
+  padding: 0;
 }
 
 .child.wins {
@@ -110,7 +111,55 @@ body {
   background: linear-gradient(0deg, darkred, red);
 }
 
+#scores {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: absolute;
+  right: 50%;
+  top: 0;
+  margin: 0;
+  background-color: #777a;
+  padding: 5px;
+  transform: translateX(50%);
+  -webkit-transform: translateX(50%);
+  -moz-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  -o-transform: translateX(50%);
+  color: white;
+}
 
+#RELOAD {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  transform: translateX(-50%);
+  display: block;
+  color: darkblue;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  z-index: calc(9999 + 1);
+  user-select: none;
+}
+
+#clear {
+  color: darkred;
+  user-select: none;
+}
+
+#reds {
+  color: var(--red-player);
+}
+
+#blues {
+  color: var(--blue-player);
+}
+
+#pots {
+  color: var(--nop);
+}
 
 @media (min-width: 576px) {
   .child {
