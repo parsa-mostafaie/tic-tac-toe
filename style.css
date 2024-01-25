@@ -4,6 +4,11 @@
   --nop: #aaa;
 }
 
+@font-face {
+  font-family: salsa;
+  src: url(Salsa-Regular.ttf);
+}
+
 .center {
   position: absolute;
   top: 50%;
@@ -16,6 +21,7 @@
 }
 
 body {
+  font-family: salsa;
   overflow: hidden;
   width: 100dvw;
   height: 100dvh;
@@ -65,7 +71,6 @@ body {
   padding: 5px;
   font-size: 1.5rem;
   text-align: center;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -ms-transition: all 1s;
@@ -112,7 +117,6 @@ body {
 }
 
 #scores {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: absolute;
   right: 50%;
   top: 0;
@@ -131,7 +135,6 @@ body {
   position: absolute;
   bottom: 0;
   left: 50%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bolder;
   transform: translateX(-50%);
   display: block;
