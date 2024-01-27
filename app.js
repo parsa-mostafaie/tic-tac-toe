@@ -36,12 +36,10 @@ childs.forEach((item, index) => {
             turn.classList.add("win");
             turn.textContent = "Pot";
             history[2]++;
+            current_player = -1;
             updateScore();
           } else {
-            turn.classList.remove(color_dict[current_player]);
-            current_player = current_player == 1 ? 2 : 1;
-            turn.classList.add(color_dict[current_player]);
-            turn.textContent = color_dict[current_player] + "'s Turn";
+            updateTurn();
           }
         }
       });
@@ -67,7 +65,8 @@ function checkWin(callback) {
         turn.textContent = color_dict[g[0]] + " Win!";
 
         history[g[0] - 1]++;
-
+        current_player = -1;
+        alert(starter);
         updateScore();
       }
     }
@@ -86,6 +85,7 @@ function filled() {
 }
 
 let history = [0, 0, 0];
+let starter = 1;
 
 window.addEventListener("load", () => {
   history = localStorage.getItem("HISTORY");
@@ -102,6 +102,19 @@ window.addEventListener("load", () => {
     });
   }
 
+  var ls_last_starter = localStorage.getItem("last_starter");
+  var ls_last_player = localStorage.getItem("last_player");
+  if (ls_last_player && ls_last_player != -1) {
+    starter = ls_last_player == 1 ? 2 : 1; // because this rechange to ls_... in updateTurn();
+  } else {
+    if (ls_last_starter) {
+      starter = ls_last_starter;
+    }
+  }
+
+  current_player = starter;
+  updateTurn();
+  starter = current_player;
   updateScore();
 });
 
@@ -111,7 +124,9 @@ window.addEventListener("beforeunload", () => {
   } else {
     localStorage.setItem("GAME", game_empty);
   }
+  localStorage.setItem("last_starter", starter);
   localStorage.setItem("HISTORY", JSON.stringify(history));
+  localStorage.setItem("last_player", current_player);
 });
 
 let blues = document.getElementById("blues");
@@ -129,6 +144,8 @@ let clear = document.getElementById("clear");
 clear.addEventListener("click", () => {
   history = [0, 0, 0];
   game = JSON.parse(game_empty);
+  current_player = -1;
+  starter = 2;
   location.reload();
 });
 
@@ -142,5 +159,13 @@ let newg = document.getElementById("newg");
 
 newg.addEventListener("click", () => {
   game = JSON.parse(game_empty);
+  current_player = -1;
   location.reload();
 });
+
+function updateTurn() {
+  turn.classList.remove(color_dict[current_player]);
+  current_player = current_player == 1 ? 2 : 1;
+  turn.classList.add(color_dict[current_player]);
+  turn.textContent = color_dict[current_player] + "'s Turn";
+}
