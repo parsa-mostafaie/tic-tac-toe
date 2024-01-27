@@ -129,7 +129,6 @@ let clear = document.getElementById("clear");
 clear.addEventListener("click", () => {
   history = [0, 0, 0];
   game = JSON.parse(game_empty);
-  localStorage.clear();
   location.reload();
 });
 
@@ -143,6 +142,5 @@ let newg = document.getElementById("newg");
 
 newg.addEventListener("click", () => {
   game = JSON.parse(game_empty);
-  localStorage.setItem(game, game_empty);
   location.reload();
 });
