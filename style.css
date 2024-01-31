@@ -63,8 +63,6 @@ body {
 .turn {
   background-color: #777a;
   position: absolute;
-  top: 0;
-  left: 0;
   display: inline-block;
   transition: all 1s;
   text-transform: capitalize;
@@ -75,6 +73,8 @@ body {
   -moz-transition: all 1s;
   -ms-transition: all 1s;
   -o-transition: all 1s;
+  
+  z-index: 9999;
 }
 
 .turn.red {
@@ -89,8 +89,19 @@ body {
   color: var(--nop);
 }
 
+.turn:not(.win) {
+  top: 50%;
+  left: 0;
+  transform: translate(-34%,-50%) rotateZ(-90deg);
+  -webkit-transform: translate(-34%,-50%) rotateZ(-90deg);
+  -moz-transform: translate(-34%,-50%) rotateZ(-90deg);
+  -ms-transform: translate(-34%,-50%) rotateZ(-90deg);
+  -o-transform: translate(-34%,-50%) rotateZ(-90deg);
+}
+
 .turn.win {
-  z-index: 9999;
+  top: 0;
+  left: 0;
   width: 100vw;
   width: 100dvw;
   height: 100vh;

@@ -66,7 +66,6 @@ function checkWin(callback) {
 
         history[g[0] - 1]++;
         current_player = -1;
-        alert(starter);
         updateScore();
       }
     }
